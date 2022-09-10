@@ -63,6 +63,16 @@ namespace AspDotNet_Practice
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+
+                // Register the endpoints for the ROUTES in the AREAS
+                endpoints.MapControllerRoute(
+                    name: "areas",
+                    pattern: "{area}/{controller=Home}/{action=Index}/{id?}");
+
+                // Register the endpoints for the ROUTES not in any area.
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
