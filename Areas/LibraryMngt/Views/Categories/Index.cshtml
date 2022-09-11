@@ -15,6 +15,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.CategoryName)
             </th>
+            <th>
+                Available Books
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -23,6 +26,10 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+
+            <td>
+                @item.Books.Count()
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.CategoryId">Edit</a> |
