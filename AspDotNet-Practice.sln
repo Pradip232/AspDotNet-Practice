@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyAspDemo", "MyAspDemo.csproj", "{97B8354E-ECCE-4D41-9AA2-E3E918FD5422}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraryMngt", "LibraryMngt.csproj", "{97B8354E-ECCE-4D41-9AA2-E3E918FD5422}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

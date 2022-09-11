@@ -1,0 +1,14 @@
+﻿Steps of design:
+
+Single model view =>
+1.	Created Models folder in that created class which represents structure of database. 
+2.	Created Data folder in that added ApplicationDbContext
+3.	Create controller -> Add XYZ.cs as controller class
+4.	Added asociated view to controller
+
+Multiple model view =>
+
+1.	Created Books Class which is our second model
+2.	Added relation at in Book class inside the #region  section. Here now each book has information about its category
+3.	Added relation in category class inside the #region section by creating the collection of books in it for each class. 
+	Now child knows who is the parent and parent has the information about his childrens.
