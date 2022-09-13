@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace AspDotNet_Practice.Models
@@ -25,9 +26,15 @@ namespace AspDotNet_Practice.Models
         //Navigation properties to a Master Model - Category
         [Required]
         public int CategoryId { get; set; }
+
+
         [ForeignKey(nameof(Book.CategoryId))]
         public Category co { get; set; }
 
+        #endregion
+
+        #region
+        public ICollection<Author> Authors { get; set; }
         #endregion
 
     }

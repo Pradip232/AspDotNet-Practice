@@ -13,6 +13,7 @@ Multiple model view =>
 2.	Added relation at in Book class inside the #region  section. Here now each book has information about its category
 3.	Added relation in category class inside the #region section by creating the collection of books in it for each class. 
 	Now child knows who is the parent and parent has the information about his childrens.
+4.  Run the migration and update the database.
 
 Now to display the number of books for each category item we added one one column namely "Available books" in "Areas/LibraryMngt/Categories/index.cshtml"
 It will show only the column bbut data foer that column is comming from Categories Coontroller hence go to CategoriesController.cs and modify the return state ment in such way that it will also give me the amount of books for that perticular category.

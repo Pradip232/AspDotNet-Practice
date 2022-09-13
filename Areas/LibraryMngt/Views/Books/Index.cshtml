@@ -22,7 +22,7 @@
                 @Html.DisplayNameFor(model => model.IsEnabled)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.co)
+                @Html.DisplayNameFor(model => model.co.CategoryName)
             </th>
             <th></th>
         </tr>
@@ -51,3 +51,5 @@
 }
     </tbody>
 </table>
+
+<a asp-area="LibraryMngt" asp-controller="Categories" asp-action="Index"> <- Back to Categories</a>

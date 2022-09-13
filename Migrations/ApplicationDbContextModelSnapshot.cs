@@ -18,6 +18,27 @@ namespace AspDotNet_Practice.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("AspDotNet_Practice.Models.Author", b =>
+                {
+                    b.Property<int>("AuthorId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AuthorName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("BookId")
+                        .HasColumnType("int");
+
+                    b.HasKey("AuthorId");
+
+                    b.HasIndex("BookId");
+
+                    b.ToTable("Authors");
+                });
+
             modelBuilder.Entity("AspDotNet_Practice.Models.Book", b =>
                 {
                     b.Property<int>("BookId")
@@ -60,6 +81,15 @@ namespace AspDotNet_Practice.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("AspDotNet_Practice.Models.Author", b =>
+                {
+                    b.HasOne("AspDotNet_Practice.Models.Book", "Bo")
+                        .WithMany("Authors")
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("AspDotNet_Practice.Models.Book", b =>

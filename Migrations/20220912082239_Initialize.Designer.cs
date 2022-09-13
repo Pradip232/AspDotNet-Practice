@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AspDotNet_Practice.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220911114105_AddedBookModelClass")]
-    partial class AddedBookModelClass
+    [Migration("20220912082239_Initialize")]
+    partial class Initialize
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -19,6 +19,27 @@ namespace AspDotNet_Practice.Migrations
                 .HasAnnotation("ProductVersion", "3.1.28")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("AspDotNet_Practice.Models.Author", b =>
+                {
+                    b.Property<int>("AuthorId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AuthorName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("BookId")
+                        .HasColumnType("int");
+
+                    b.HasKey("AuthorId");
+
+                    b.HasIndex("BookId");
+
+                    b.ToTable("Authors");
+                });
 
             modelBuilder.Entity("AspDotNet_Practice.Models.Book", b =>
                 {
@@ -62,6 +83,15 @@ namespace AspDotNet_Practice.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("AspDotNet_Practice.Models.Author", b =>
+                {
+                    b.HasOne("AspDotNet_Practice.Models.Book", "Bo")
+                        .WithMany("Authors")
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("AspDotNet_Practice.Models.Book", b =>
