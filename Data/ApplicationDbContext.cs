@@ -14,10 +14,11 @@ namespace AspDotNet_Practice.Data
         {
         }
 
+
         public DbSet<Category> Categories { get; set; }
 
-        public DbSet<AspDotNet_Practice.Models.Book> Book { get; set; }
+        public DbSet<Book> Books { get; set; }
 
-        public DbSet<AspDotNet_Practice.Models.Author> Author { get; set; }
+        public DbSet<Author> Authors { get; set; }
     }
 }

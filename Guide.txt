@@ -36,3 +36,9 @@ paste below code for that::
     </div>
 
 </li>
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+To apply the filters on books while retriving the information in categories our task is to filter the books category wise
+
+for that in BooksController we have created seperate Filter function "GetBooksOfCategory(int filterCategoryId)"
+Now call this action method for "Manage Books" option.

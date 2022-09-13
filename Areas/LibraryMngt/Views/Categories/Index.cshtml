@@ -35,7 +35,10 @@
                 <a asp-action="Edit" asp-route-id="@item.CategoryId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.CategoryId">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.CategoryId">Delete</a> |
-                <a asp-area="LibraryMngt" asp-controller="Books" asp-action="Index"> Manage Books</a>
+                    <a asp-area="LibraryMngt" 
+                        asp-controller="Books"
+                        asp-action="GetBooksOfCategory"
+                        asp-route-filterCategoryId="@item.CategoryId"> Manage Books</a>
             </td>
         </tr>
 }

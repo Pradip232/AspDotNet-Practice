@@ -29,7 +29,7 @@ namespace AspDotNet_Practice.Models
 
 
         [ForeignKey(nameof(Book.CategoryId))]
-        public Category co { get; set; }
+        public Category Co { get; set; }
 
         #endregion
 

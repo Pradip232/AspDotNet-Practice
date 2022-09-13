@@ -11,7 +11,7 @@ namespace AspDotNet_Practice.Models
         [Required(ErrorMessage = "Id cannot be empty.")]
         public int CategoryId { get; set; }
 
-
+        [Display(Name =" Category Name")]
         [Required(ErrorMessage ="Category Name cannot be empty.")]
         //[MaxLength(60)]
         [StringLength(100,ErrorMessage ="{0} must be having less than {1} characteres.")]

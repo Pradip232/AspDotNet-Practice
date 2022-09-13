@@ -23,8 +23,18 @@ namespace AspDotNet_Practice.Areas.LibraryMngt.Controllers
         // GET: LibraryMngt/Books
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Book.Include(b => b.co);
+            var applicationDbContext = _context.Books.Include(b => b.Co);
             return View(await applicationDbContext.ToListAsync());
+        }
+
+        public async Task<IActionResult> GetBooksOfCategory(int filterCategoryId)
+        {
+            var viewmodel = await _context.Books
+                                          .Where(b => b.CategoryId == filterCategoryId)
+                                          .Include(c=> c.Co)
+                                          .ToListAsync();
+
+            return View(viewName: "Index", model: viewmodel);
         }
 
         // GET: LibraryMngt/Books/Details/5
@@ -35,8 +45,8 @@ namespace AspDotNet_Practice.Areas.LibraryMngt.Controllers
                 return NotFound();
             }
 
-            var book = await _context.Book
-                .Include(b => b.co)
+            var book = await _context.Books
+                .Include(b => b.Co)
                 .FirstOrDefaultAsync(m => m.BookId == id);
             if (book == null)
             {
@@ -78,7 +88,7 @@ namespace AspDotNet_Practice.Areas.LibraryMngt.Controllers
                 return NotFound();
             }
 
-            var book = await _context.Book.FindAsync(id);
+            var book = await _context.Books.FindAsync(id);
             if (book == null)
             {
                 return NotFound();
@@ -131,8 +141,8 @@ namespace AspDotNet_Practice.Areas.LibraryMngt.Controllers
                 return NotFound();
             }
 
-            var book = await _context.Book
-                .Include(b => b.co)
+            var book = await _context.Books
+                .Include(b => b.Co)
                 .FirstOrDefaultAsync(m => m.BookId == id);
             if (book == null)
             {
@@ -147,15 +157,15 @@ namespace AspDotNet_Practice.Areas.LibraryMngt.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var book = await _context.Book.FindAsync(id);
-            _context.Book.Remove(book);
+            var book = await _context.Books.FindAsync(id);
+            _context.Books.Remove(book);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool BookExists(int id)
         {
-            return _context.Book.Any(e => e.BookId == id);
+            return _context.Books.Any(e => e.BookId == id);
         }
     }
 }
